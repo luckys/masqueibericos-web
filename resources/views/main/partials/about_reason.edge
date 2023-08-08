@@ -1,0 +1,121 @@
+      <!-- About Start -->
+      <div class="container-xxl py-5">
+        <div class="container">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div
+                  class="col-6 text-start josh-js"
+                  data-josh-anim-name="zoomIn"
+                  data-josh-duration="1000ms"
+                >
+                  <img
+                    class="img-fluid rounded w-100 wow zoomIn"
+                    data-wow-delay="0.1s"
+                    src="./assets/about-1-84bb43a0.jpg"
+                  />
+                </div>
+                <div
+                  class="col-6 text-start josh-js"
+                  data-josh-anim-name="zoomIn"
+                  data-josh-duration="1100ms"
+                >
+                  <img
+                    class="img-fluid rounded w-75 wow zoomIn"
+                    data-wow-delay="0.3s"
+                    src="./assets/about-2-00a88297.jpg"
+                    style="margin-top: 25%"
+                  />
+                </div>
+                <div
+                  class="col-6 text-end josh-js"
+                  data-josh-anim-name="zoomIn"
+                  data-josh-duration="1200ms"
+                >
+                  <img
+                    class="img-fluid rounded w-75 wow zoomIn"
+                    data-wow-delay="0.5s"
+                    src="./assets/about-3-8e81a3fd.jpg"
+                  />
+                </div>
+                <div
+                  class="col-6 text-end josh-js"
+                  data-josh-anim-name="zoomIn"
+                  data-josh-duration="1300ms"
+                >
+                  <img
+                    class="img-fluid rounded w-100 wow zoomIn"
+                    data-wow-delay="0.7s"
+                    src="./assets/about-4-724e2cf0.jpg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-md-6 bg-dark d-flex align-items-center josh-js"
+              data-josh-anim-name="zoomIn"
+            >
+              <div class="p-5" id="reason-form">
+                <h5
+                  class="section-title ff-secondary text-start text-primary fw-normal"
+                >
+                  Quejas y/o Sugerencias
+                </h5>
+                <h1 class="text-white mb-4">Tu opinión nos importa</h1>
+                @if(flashMessages.has('reason_success'))
+                <div class="alert alert-success" role="alert">
+                  {{ flashMessages.get('reason_success') }}
+                </div>
+              @endif
+                <form action="{{ route('reason.store') }}" method="post">
+                {{ csrfField() }}
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          value="{{ flashMessages.get('email', '') }}"
+                          placeholder="Correo Electrónico"
+                        />
+                        <label for="email">Correo electrónico</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <select class="form-select" id="reason_type" name="reason_type" value="{{ flashMessages.get('reason_type', '') }}">
+                          <option value="suggestion">Sugerencia</option>
+                          <option value="complaint">Queja</option>
+                          <option value="other">Otro</option>
+                        </select>
+                        <label for="reason_type">Elija un motivo</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating">
+                        <textarea
+                          class="form-control"
+                          placeholder="Requerimientos Especiales"
+                          value="{{ flashMessages.get('reason_text', '') }}"
+                          id="reason_text"
+                          name="reason_text"
+                          style="height: 100px"
+                        ></textarea>
+                        <label for="reason_text">Escriba su opinión</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100 py-3" type="submit">
+                        Enviar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- About End -->

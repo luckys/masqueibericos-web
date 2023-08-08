@@ -1,0 +1,8 @@
+<h3> Reserva de {{ full_name }} </h3>
+<p>
+  Se ha realizado una reserva a nombre de <strong>{{ full_name }}</strong> para <strong>{{ booking_at }}</strong> para <strong>{{ number_of_people }}</strong> persona/s. 
+</p>
+@if(special_request)
+  <h3>Requerimientos especiales:</h3>
+  <p>{{ special_request }}</p>
+@end

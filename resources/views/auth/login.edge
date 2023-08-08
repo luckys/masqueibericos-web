@@ -1,0 +1,66 @@
+@layout('layouts/auth')
+
+@section('body')
+    <div class="col-md-6 bg-dark offset-md-3">
+            <div class="p-5">
+              <h5
+                class="section-title ff-secondary text-start text-primary fw-normal"
+              >
+                Autenticación
+              </h5>
+              <h1 class="text-white mb-4">Inicia sesión</h1>
+              @if(flashMessages.has('success'))
+                <div class="alert alert-success" role="alert">
+                  {{ flashMessages.get('success') }}
+                </div>
+              @endif
+
+              <form action="{{ route('AuthLoginController.store') }}" method="post">
+              {{ csrfField() }}
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Correo Electrónico"
+                        value="{{ flashMessages.get('email', '') }}"
+                        required
+                      />
+                      <label for="email">Correo electrónico</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Contraseña"
+                        value="{{ flashMessages.get('password', '') }}"
+                        required
+                      />
+                      <label for="password">Contraseña</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="{{ flashMessages.get('rememberme', '') }}" name="rememberme" id="rememberme">
+                      <label class="form-check-label" for="rememberme">
+                        Recuerdame
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">
+                      Entrar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+    </div>
+@end

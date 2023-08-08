@@ -1,0 +1,114 @@
+      <!-- Reservation Start -->
+      <div class="container-xxl py-5 px-0">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img
+              class="img-fluid rounded w-100 wow zoomIn"
+              src="./assets/bg-booking-2c5b815d.jpg"
+            />
+          </div>
+          <div class="col-md-6 bg-dark d-flex align-items-center">
+            <div class="p-5" id="booking">
+              <h5
+                class="section-title ff-secondary text-start text-primary fw-normal"
+              >
+                Reservar
+              </h5>
+              <h1 class="text-white mb-4">Has tu reserva online</h1>
+              @if(flashMessages.has('booking_success'))
+                <div class="alert alert-success" role="alert">
+                  {{ flashMessages.get('reason_success') }}
+                </div>
+              @endif
+
+              <form action="{{ route('booking.store') }}" method="post">
+              {{ csrfField() }}
+                <div class="row g-3">
+                  <div class="col-md-6 animated">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="full_name"
+                        name="full_name"
+                        placeholder="Nombre y Apellidos"
+                        value="{{ flashMessages.get('full_name', '') }}"
+                        required
+                      />
+                      <label for="full_name">Nombre y apellidos</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Correo Electrónico"
+                        value="{{ flashMessages.get('email', '') }}"
+                        required
+                      />
+                      <label for="email">Correo electrónico</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div
+                      class="form-floating date"
+                      id="booking_at"
+                      data-target-input="nearest"
+                    >
+                      <input
+                        type="datetime-local"
+                        class="form-control datetimepicker-input"
+                        id="booking_at"
+                        name="booking_at"
+                        placeholder="Fecha de reserva"
+                        value="{{ flashMessages.get('booking_at', '') }}"
+                        required
+                      />
+                      <label for="booking_at">Fecha de reserva</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="number_of_people"
+                        name="number_of_people"
+                        min="1"
+                        placeholder="Número de personas"
+                        value="{{ flashMessages.get('number_of_people', null) }}"
+                        required
+                      />
+                      <label for="number_of_people">Número de personas</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea
+                        class="form-control"
+                        placeholder="Requerimientos Especiales"
+                        id="special_request"
+                        name="special_request"
+                        style="height: 100px"
+                        value=""
+                      ></textarea>
+                      <label for="special_request"
+                        >Requerimientos especiales</label
+                      >
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">
+                      Reservar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Reservation End -->
